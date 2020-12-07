@@ -1,0 +1,52 @@
+
+package interpolacion;
+
+import java.util.Scanner;
+
+
+public class Interpolacion {
+
+    public static void main(String[] args) {
+        Scanner ingreso = new Scanner(System.in);
+        int arreglo[]={1,2,3,4,5,6,7 ,8 , 9, 10 ,11 , 12, 13, 14, 15, 16, 17, 19, 19};
+        int dato, nBus, nElementos;
+        boolean buscas = false;
+        
+        System.out.println("Digita el numero a buscar......");
+        dato = ingreso.nextInt();
+        nElementos = arreglo.length-1;
+        int inicio = 0;
+        int fin = nElementos;
+        
+        for ( int j = 0; j < arreglo.length; j ++){
+            
+            nBus=((fin)*(dato-arreglo[inicio])/(arreglo[fin]-arreglo[inicio]));
+            
+            if (nBus>fin){
+                break;
+            }else if(nBus<0){
+                break;
+            }
+            if (nBus<inicio){
+                nBus = inicio ;
+            }
+            
+            if (nBus >= inicio && nBus <=fin){
+                if (arreglo[nBus]==dato){
+                    System.out.println("El numero buscado: "+ dato + " esta en la posicion: " + (nBus));
+                    buscas = true;
+                    break;
+                }else if ( arreglo[nBus]<dato){
+                    fin = fin -1;
+                }else if(arreglo[nBus]>dato){
+                    inicio = inicio + 1;
+                }
+            }
+            if(buscas == false){
+                System.out.println("\nE1 numero no se encuentra en el arreglo");
+                
+            }
+        }
+    }
+    
+}
